@@ -1,6 +1,7 @@
 import { Accordion } from "./components/Accordion";
 import { AccordionGroup } from "./components/accordion-groups";
 import Callout from "./components/callouts";
+import Card from "./components/card";
 
 
 interface ComponentContainerProps {
@@ -63,6 +64,20 @@ function App() {
               <Callout type="check">
                 This adds a check in the content
               </Callout>
+            </div>
+
+          </ComponentContainer>
+
+          <ComponentContainer name="Cards">
+            <div className="flex flex-col">
+
+            <Card title="Click on me" icon={''} href="/content/components/card-group" color="blue">
+              This is how you use a card with an icon and a link. Clicking on this card brings you to the Card Group page.
+            </Card> 
+
+            <Card title="Click on me" icon={''} href="/test-watermark.png" color="blue" horizontal={false}>
+              This is how you use a card with an icon and a link. Clicking on this card brings you to the Card Group page.
+            </Card> 
             </div>
 
           </ComponentContainer>

@@ -15,45 +15,44 @@ const calloutStyles = {
   check: "border-emerald-500/20 bg-emerald-50/50  dark:border-emerald-500/30 dark:bg-emerald-500/10 text-emerald-900 dark:text-emerald-200",
 };
 
-const calloutIcons = {
-  note: "fa-regular fa-sticky-note",
-  warning: "fa-solid fa-triangle-exclamation",
-  info: "fa-solid fa-circle-info",
-  tip: "fa-solid fa-lightbulb",
-  check: "fa-solid fa-check-circle",
-};
 
 const Callout: FC<CalloutProps> = ({ type, children }) => {
-  let color = ""; 
+  let color = "gray"; 
   let calloutIcon = "";
 
   switch (type) {
     case "note":
-      color = "sky";
+      color = "bg-sky-500 dark:bg-sky-200";
+      calloutIcon = "circle-exclamation";
       break;
     case "warning":
-      color = "amber";
+      color = "bg-amber-400 dark:bg-amber-200";
+      calloutIcon = "triangle-exclamation";
       break;
     case "info":
-      color = "zinc";
+      color = "bg-zinc-400 dark:bg-zinc-200";
+      calloutIcon = "circle-info";
       break;
     case "tip":
-      color = "emerald";
+      color = "bg-emerald-600 dark:bg-emerald-200";
+      calloutIcon = "lightbulb";
       break;
     case "check":
-      color = "emerald";
+      color = "bg-emerald-600 dark:bg-emerald-200";
+      calloutIcon = "check";
       break;
   }
   
   return (
     <div className={`callout my-4 px-5 py-4 overflow-hidden rounded-2xl flex gap-3 border ${calloutStyles[type]}`}>
-      <div className={`mt-0.5 w-4 text-${color}`}>
-        <i className={`text-xl ${calloutIcons[type]}`}></i>
+      <div className={`mt-0.5 w-4`}>
         <svg
+          width="14" height="14"
+          className={`${color}`}
           style={{
-            maskImage: 'url("https://mintlify.b-cdn.net/v6.6.0/solid/caret-right.svg")',
+            maskImage: `url("https://mintlify.b-cdn.net/v6.6.0/solid/${calloutIcon}.svg")`,
             maskRepeat: "no-repeat",
-            maskPosition: "center center",
+            maskPosition: "center",
           }}
           ></svg>
       </div>

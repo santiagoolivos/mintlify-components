@@ -50,7 +50,7 @@ export function Accordion({
                 style={{
                   maskImage: `url("https://mintlify.b-cdn.net/v6.6.0/${iconType}/${icon}.svg")`,
                   maskRepeat: "no-repeat",
-                  maskPosition: "center center",
+                  maskPosition: "center",
                 }}
             ></svg>
           </div>
