@@ -1,18 +1,18 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import Prism from "prismjs";
-import "prismjs/themes/prism-tomorrow.css"; // Or your preferred dark Prism theme
+import "prismjs/themes/prism-tomorrow.css";
 import { CopyToClipboardButton } from "./copy";
-
-// ---- Import the two new components ----
 
 interface CodeBlockProps {
   title?: string;
-  content: string;            // Raw, un-highlighted code
+  content: string;            // Raw (un-highlighted) code
   language?: string;          // e.g. "javascript", "java", "python"
   highlightLines?: string;    // e.g. "1,3-5"
   initialCollapsedHeight?: number; // e.g. 100 (px)
+  isExpandable?: boolean;     // If true, show expand/collapse overlay
+  hideHeader?: boolean;       // If true, don't render title or copy button
 }
 
 export function CodeBlock({
@@ -21,25 +21,22 @@ export function CodeBlock({
   language = "javascript",
   highlightLines,
   initialCollapsedHeight = 100,
+  isExpandable = false,
+  hideHeader = false,
 }: CodeBlockProps) {
   const [expanded, setExpanded] = useState(false);
   const [htmlCode, setHtmlCode] = useState("");
 
-  /**
-   * Parse highlightLines (e.g., "1,3-5") into a set of 1-based line numbers
-   * that should have the "line-highlight" class.
-   */
+  // Parse highlightLines (e.g., "1,3-5") into a set of line numbers
   const parseHighlightLines = (lineSpec: string): Set<number> => {
     const linesToHighlight = new Set<number>();
     lineSpec.split(",").forEach((chunk) => {
       if (chunk.includes("-")) {
-        // Range (e.g. "3-5")
         const [start, end] = chunk.split("-").map((n) => parseInt(n, 10));
         for (let i = start; i <= end; i++) {
           linesToHighlight.add(i);
         }
       } else {
-        // Single line
         linesToHighlight.add(parseInt(chunk, 10));
       }
     });
@@ -47,8 +44,7 @@ export function CodeBlock({
   };
 
   useEffect(() => {
-    // No line highlighting: highlight entire code at once
-    console.log("content", highlightLines);
+    // If no line highlighting, just highlight entire content
     if (!highlightLines) {
       const highlighted = Prism.highlight(
         content,
@@ -59,28 +55,30 @@ export function CodeBlock({
       return;
     }
 
-    // With line highlighting: highlight each line separately
+    // Otherwise, highlight line-by-line
     const highlightSet = parseHighlightLines(highlightLines);
-    console.log("highlightSet", highlightSet);
     const rawLines = content.split("\n");
 
     const processedLines = rawLines.map((line, index) => {
+      const lineNumber = index + 1;
       const lineHtml = Prism.highlight(
         line,
         Prism.languages[language] || Prism.languages.javascript,
         language
       );
-      // If line is in the highlight set, wrap in <span class="line-highlight">
-      const lineNumber = index + 1;
       if (highlightSet.has(lineNumber)) {
+        // Wrap in .line-highlight if it's a highlighted line
         return `<span class="line-highlight">${lineHtml}</span>`;
       }
-      // Only add a newline if the line is not highlighted
+      // Add a newline only if not the last line
       return lineHtml + (index < rawLines.length - 1 ? "\n" : "");
     });
-    console.log("processedLines", processedLines);
+
     setHtmlCode(processedLines.join(""));
   }, [content, language, highlightLines]);
+
+  // If not expandable, we treat it as always expanded
+  const effectiveExpanded = isExpandable ? expanded : true;
 
   return (
     <div
@@ -90,44 +88,40 @@ export function CodeBlock({
         ring-1 ring-transparent dark:ring-gray-800/50 codeblock-dark
       "
     >
-      {/* Header: Title & CopyToClipboardButton */}
-      <div
-        className="
-          flex rounded-t-2xl text-gray-400 text-xs leading-6 
-          border-b font-medium bg-black/40 border-gray-900/80
-        "
-      >
+      {/* Header: Title & CopyToClipboard (unless hideHeader is true) */}
+      {!hideHeader && (
         <div
           className="
-            flex-none border-b px-4 pt-2.5 pb-2 
-            flex items-center text-primary-light border-primary-light
+            flex rounded-t-2xl text-gray-400 text-xs leading-6 
+            border-b font-medium bg-black/40 border-gray-900/80
           "
         >
-          {title}
-        </div>
+          <div
+            className="
+              flex-none border-b px-4 pt-2.5 pb-2 
+              flex items-center text-primary-light border-primary-light
+            "
+          >
+            {title}
+          </div>
 
-        <div className="flex-1 mr-4 flex items-center justify-end">
-          <div className="z-10 relative">
-            {/* 
-              Use the new CopyToClipboardButton
-              - textToCopy={content} 
-              - pass "data-testid" or "aria-label" if you like
-              - optionally set a custom tooltipColor 
-            */}
-            <CopyToClipboardButton
-              data-testid="copy-code-button"
-              aria-label="Copy the contents from the code block"
-              textToCopy={content}
-              tooltipColor="#002937" 
-              className="
-                group/copy-button
-                h-7 w-7 flex items-center justify-center 
-                rounded-md backdrop-blur
-              "
-            />
+          <div className="flex-1 mr-4 flex items-center justify-end">
+            <div className="z-10 relative">
+              <CopyToClipboardButton
+                textToCopy={content}
+                data-testid="copy-code-button"
+                aria-label="Copy the contents from the code block"
+                tooltipColor="#002937"
+                className="
+                  group/copy-button
+                  h-7 w-7 flex items-center justify-center 
+                  rounded-md backdrop-blur
+                "
+              />
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Code Content */}
       <div
@@ -138,7 +132,7 @@ export function CodeBlock({
         "
         style={{
           fontVariantLigatures: "none",
-          height: expanded ? "auto" : `${initialCollapsedHeight}px`,
+          height: effectiveExpanded ? "auto" : `${initialCollapsedHeight}px`,
         }}
       >
         <div
@@ -152,7 +146,7 @@ export function CodeBlock({
             active:scrollbar-thumb-white/25 dark:active:scrollbar-thumb-white/25
           "
         >
-          <pre >
+          <pre>
             <code
               className={`language-${language}`}
               dangerouslySetInnerHTML={{ __html: htmlCode }}
@@ -160,8 +154,8 @@ export function CodeBlock({
           </pre>
         </div>
 
-        {/* Expand / Collapse Overlay */}
-        {!expanded ? (
+        {/* Expand/Collapse: Only if isExpandable === true */}
+        {isExpandable && !effectiveExpanded && (
           <div
             className="
               absolute left-0 z-[10] right-0 flex justify-center items-end
@@ -193,7 +187,9 @@ export function CodeBlock({
               Expand code
             </button>
           </div>
-        ) : (
+        )}
+
+        {isExpandable && effectiveExpanded && (
           <div className="flex justify-center pt-2 pb-4">
             <button
               className="

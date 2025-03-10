@@ -4,12 +4,35 @@ import Callout from "./components/callouts";
 import Card from "./components/card";
 import CardGroup from "./components/card-group";
 import {CodeBlock} from "./components/code-block";
+import { CodeGroup } from "./components/code-group";
 
 
 interface ComponentContainerProps {
   name: string;
   children: React.ReactNode;
 }
+
+const codeSnippets = [
+  {
+    filename: "helloWorld.js",
+    language: "javascript",
+    content: `console.log("Hello World");`
+  },
+  {
+    filename: "hello_world.py",
+    language: "python",
+    content: `print('Hello World!')`
+  },
+  {
+    filename: "HelloWorld.java",
+    language: "java",
+    content: `class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}`
+  }
+];
 
 const ComponentContainer = ({ name,  children }: ComponentContainerProps) => {
   return (
@@ -100,11 +123,20 @@ sayHello();`}
             language="javascript"
             highlightLines="1, 3, 5"
             initialCollapsedHeight={100}
+            isExpandable={true}
           />
 
 
 
           </ComponentContainer>
+
+          <ComponentContainer name="Code Group">
+          <CodeGroup
+            codeSnippets={codeSnippets}
+            // Optional: pass a default index if you want a certain snippet selected
+            defaultIndex={0}
+          />
+      </ComponentContainer>
 
 
 
