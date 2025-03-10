@@ -1,7 +1,9 @@
-import { Accordion } from "./components/Accordion";
+import { Accordion } from "./components/accordion";
 import { AccordionGroup } from "./components/accordion-groups";
 import Callout from "./components/callouts";
 import Card from "./components/card";
+import CardGroup from "./components/card-group";
+import {CodeBlock} from "./components/code-block";
 
 
 interface ComponentContainerProps {
@@ -13,7 +15,12 @@ const ComponentContainer = ({ name,  children }: ComponentContainerProps) => {
   return (
     <div className="flex flex-row gap-5 items-center justify-center">
       - {name}:
-      {children}
+      <div className="flex flex-col">
+      {
+
+      children
+      }
+      </div>
     </div>
   );
 }
@@ -47,8 +54,6 @@ function App() {
           </ComponentContainer>
 
           <ComponentContainer name="Callouts">
-            <div className="flex flex-col">
-
               <Callout type="note">
                 This adds a note in the content
               </Callout>
@@ -64,23 +69,45 @@ function App() {
               <Callout type="check">
                 This adds a check in the content
               </Callout>
-            </div>
 
           </ComponentContainer>
 
           <ComponentContainer name="Cards">
-            <div className="flex flex-col">
 
-            <Card title="Click on me" icon={''} href="/content/components/card-group" color="blue">
-              This is how you use a card with an icon and a link. Clicking on this card brings you to the Card Group page.
-            </Card> 
+            <CardGroup cols={2}>
 
-            <Card title="Click on me" icon={''} href="/test-watermark.png" color="blue" horizontal={false}>
-              This is how you use a card with an icon and a link. Clicking on this card brings you to the Card Group page.
-            </Card> 
-            </div>
+              <Card title="Click on me" icon={'link'}  href="/content/components/card-group" img={'/test-watermark.png'}  color="0000FF">
+                This is how you use a card with an icon and a link. Clicking on this card brings you to the Card Group page.
+              </Card> 
+
+              <Card title="Click on me" icon={'link'} href="/test-watermark.png"  img={'/test-watermark.png'} color="blue" horizontal={true}>
+                This is how you use a card with an icon and a link. Clicking on this card brings you to the Card Group page.
+              </Card> 
+              <Card title="Click on me" icon={'link'} href="/test-watermark.png"  img={'/test-watermark.png'} color="blue" horizontal={true}>
+                This is how you use a card with an icon and a link. Clicking on this card brings you to the Card Group page.
+              </Card> 
+            </CardGroup>
+          </ComponentContainer>
+
+          <ComponentContainer name="Code Block">
+          <CodeBlock
+            title="Code Block Example"
+            content={`const greeting = "Hello, World!";
+function sayHello() {
+  console.log(greeting);
+}
+sayHello();`}
+            language="javascript"
+            highlightLines="1, 3, 5"
+            initialCollapsedHeight={100}
+          />
+
+
 
           </ComponentContainer>
+
+
+
         </div>
       </div>
     </div>

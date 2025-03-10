@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* in your globals.css or a relevant stylesheet */
+.line-highlight {
+  display: block;
+  background-color: rgba(255, 255, 255, 0.1); /* or your own color */
+  border-left: 3px solid #4ade80; /* example green left border */
+  margin-left: -1rem;
+  margin-right: -1rem;
+  padding-left: 1rem;
+}
