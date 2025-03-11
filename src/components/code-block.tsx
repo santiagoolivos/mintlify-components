@@ -82,11 +82,11 @@ export function CodeBlock({
 
   return (
     <div
-      className="
-        mt-5 mb-8 not-prose rounded-2xl relative 
+      className={`
+        ${!hideHeader && 'mt-5 mb-8'} not-prose rounded-2xl relative 
         text-gray-50 bg-[#0F1117] dark:bg-codeblock 
-        ring-1 ring-transparent dark:ring-gray-800/50 codeblock-dark
-      "
+        ring-1 ring-transparent dark:ring-gray-800/50 codeblock-dark`}
+      
     >
       {/* Header: Title & CopyToClipboard (unless hideHeader is true) */}
       {!hideHeader && (

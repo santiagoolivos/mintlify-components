@@ -127,7 +127,7 @@ export function CodeGroup({
         >
           <div
             className="
-              flex-none p-5 overflow-x-auto text-sm h-full 
+              flex-none overflow-x-auto text-sm h-full 
               scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-white/20 
               dark:scrollbar-thumb-white/20 hover:scrollbar-thumb-white/25 
               dark:hover:scrollbar-thumb-white/25 active:scrollbar-thumb-white/25 
