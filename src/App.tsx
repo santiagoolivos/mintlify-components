@@ -66,6 +66,10 @@ function App() {
 						<Accordion title="I am the Accordion">
 							<p>Content inside the Accordion</p>
 						</Accordion>
+
+            <Accordion title="I am the Accordion with icon and description" icon="circle" iconType="regular" description="This is the description" defaultOpen={true}>
+							<p>Content inside the Accordion with default open</p>
+						</Accordion>
 					</ComponentContainer>
 
 					<ComponentContainer name="AccordionGroup">
@@ -88,13 +92,16 @@ function App() {
 						<Callout type="tip">This adds a tip in the content</Callout>
 						<Callout type="check">This adds a check in the content</Callout>
 					</ComponentContainer>
+
 					<ComponentContainer name="Card">
 						<Card
 							title="Click on me"
-							icon={"link"}
+							icon={"ghost"}
+              iconType="solid"
+							color="F16FF0"
 							href="/content/components/card-group"
+              horizontal={true}
 							img={"/test-watermark.png"}
-							color="0000FF"
 						>
 							This is how you use a card with an icon and a link. Clicking on
 							this card brings you to the Card Group page.
@@ -102,13 +109,14 @@ function App() {
 					</ComponentContainer>
 
 					<ComponentContainer name="Cards">
-						<CardGroup cols={2}>
+						<CardGroup cols={3}>
 							<Card
 								title="Click on me"
 								icon={"link"}
+                iconType="solid"
+                color="red" // this also can be the hex
 								href="/content/components/card-group"
 								img={"/test-watermark.png"}
-								color="0000FF"
 							>
 								This is how you use a card with an icon and a link. Clicking on
 								this card brings you to the Card Group page.

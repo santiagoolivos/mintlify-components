@@ -1,5 +1,3 @@
-"use client";
-
 import { type ReactNode, useState } from "react";
 
 interface AccordionProps {
@@ -69,7 +67,7 @@ export function Accordion({
 			{isOpen && (
 				<div
 					id={`${title}-accordion-children`}
-					className="mt-2 mb-4 mx-6 overflow-x-auto"
+					className="mt-2 mb-4 mx-6 overflow-x-auto prose dark:prose-dark"
 				>
 					{children}
 				</div>

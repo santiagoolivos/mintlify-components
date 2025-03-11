@@ -1,5 +1,3 @@
-"use client";
-
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import type { FC, ReactNode } from "react";
 

@@ -1,5 +1,3 @@
-"use client";
-
 import type { FC, ReactNode } from "react";
 
 interface CalloutProps {
@@ -20,27 +18,33 @@ const calloutStyles = {
 export const Callout: FC<CalloutProps> = ({ type, children }) => {
 	let color = "gray";
 	let calloutIcon = "";
+	let textColor = "";
 
 	switch (type) {
 		case "note":
 			color = "bg-sky-500 dark:bg-sky-200";
 			calloutIcon = "circle-exclamation";
+			textColor = "text-sky-900 dark:text-sky-200";
 			break;
 		case "warning":
 			color = "bg-amber-400 dark:bg-amber-200";
 			calloutIcon = "triangle-exclamation";
+			textColor = "text-amber-900 dark:text-amber-200";
 			break;
 		case "info":
 			color = "bg-zinc-400 dark:bg-zinc-200";
 			calloutIcon = "circle-info";
+			textColor = "text-zinc-900 dark:text-zinc-200";
 			break;
 		case "tip":
 			color = "bg-emerald-600 dark:bg-emerald-200";
 			calloutIcon = "lightbulb";
+			textColor = "text-emerald-900 dark:text-emerald-200";
 			break;
 		case "check":
 			color = "bg-emerald-600 dark:bg-emerald-200";
 			calloutIcon = "check";
+			textColor = "text-emerald-900 dark:text-emerald-200";
 			break;
 	}
 
@@ -54,13 +58,13 @@ export const Callout: FC<CalloutProps> = ({ type, children }) => {
 					height="14"
 					className={`${color}`}
 					style={{
-						maskImage: `url("https://mintlify.b-cdn.net/v6.6.0/solid/${calloutIcon}.svg")`,
+						maskImage: `url("https://mintlify.b-cdn.net/v6.6.0/regular/${calloutIcon}.svg")`,
 						maskRepeat: "no-repeat",
 						maskPosition: "center",
 					}}
 				></svg>
 			</div>
-			<span className="text-sm prose min-w-0">{children}</span>
+			<span className={`text-sm prose min-w-0 ${textColor}`}>{children}</span>
 		</div>
 	);
 };
