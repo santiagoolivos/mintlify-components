@@ -1,9 +1,9 @@
 import { Accordion } from "./components/accordion";
 import { AccordionGroup } from "./components/accordion-groups";
-import Callout from "./components/callouts";
-import Card from "./components/card";
-import CardGroup from "./components/card-group";
-import {CodeBlock} from "./components/code-block";
+import { Callout } from "./components/callouts";
+import { Card } from "./components/card";
+import { CardGroup } from "./components/card-group";
+import { CodeBlock } from "./components/code-block";
 import { CodeGroup } from "./components/code-group";
 import { Icon } from "./components/icon";
 import { Step } from "./components/step";
@@ -62,7 +62,7 @@ function App() {
   return (
     <div className="min-h-screen bg-white flex flex-col items-center justify-center w-full m-10">
       <h1 className="text-4xl font-bold mb-8 text-primary">Components Showcase</h1>
-      <table className="border-collapse">
+      <table className="border-collapse max-w-screen-xl">
         <tbody>
           <ComponentContainer name="Accordion">
             <Accordion title="I am the Accordion">
@@ -160,6 +160,12 @@ sayHello();
           <Icon icon="check" iconType="solid" color="#FF5733" size={32}/>
           <Icon icon="circle" iconType="regular" color="#AF2733" size={10}/>
       </ComponentContainer>
+
+      <ComponentContainer name="Step">
+        <Step title="Lonely Step" stepNumber={1} titleSize="h2">
+          These are instructions or content that only pertain to the third step.
+        </Step>
+      </ComponentContainer>
       
       <ComponentContainer name="Steps">
 
@@ -168,14 +174,19 @@ sayHello();
             These are instructions or content that only pertain to the first step.
           </Step>
 
-          <Step title="Second Step">
+          <Step title="Second Step" titleSize="h3">
             These are instructions or content that only pertain to the second step.
           </Step>
 
-          <Step title="Third Step">
+          <Step title="Third Step" titleSize="p">
             These are instructions or content that only pertain to the third step.
           </Step>
         </Steps>
+      </ComponentContainer>
+      <ComponentContainer name="Tab">
+        <Tab title="Lonely tab" isActive={true}>
+          💪 Here’s content that’s only inside the third Tab.
+        </Tab>
       </ComponentContainer>
 
       <ComponentContainer name="Tabs">
@@ -193,18 +204,11 @@ sayHello();
         </Tabs>
       </ComponentContainer>
 
-      <ComponentContainer name="Tab">
-        <Tab title="Lonely tab" isActive={true}>
-          💪 Here’s content that’s only inside the third Tab.
-        </Tab>
-      </ComponentContainer>
-
 
       <ComponentContainer name="Tooltip">
       
         <Tooltip tip="This is a tooltip!">Hover over me</Tooltip>
       </ComponentContainer>
-
 
 
 

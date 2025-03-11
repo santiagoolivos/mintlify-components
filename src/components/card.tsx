@@ -14,7 +14,7 @@ interface CardProps {
   children: ReactNode;
 }
 
-const Card: FC<CardProps> = ({ title, icon, iconType = "regular", color, href, horizontal = false, img, children }) => {
+export const Card: FC<CardProps> = ({ title, icon, iconType = "regular", color, href, horizontal = false, img, children }) => {
   // FontAwesome icon prefix mapping
 
   // Card container classes
@@ -88,4 +88,3 @@ const Card: FC<CardProps> = ({ title, icon, iconType = "regular", color, href, h
   );
 };
 
-export default Card;

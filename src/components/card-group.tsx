@@ -7,7 +7,7 @@ interface CardGroupProps {
   cols?: number; // Number of columns per row (default: 2)
 }
 
-const CardGroup: FC<CardGroupProps> = ({ children, cols = 2}) => {
+export const CardGroup: FC<CardGroupProps> = ({ children, cols = 2}) => {
 
   const className = `not-prose grid gap-x-4 sm:grid-cols-${cols}`;
   return (
@@ -19,4 +19,3 @@ const CardGroup: FC<CardGroupProps> = ({ children, cols = 2}) => {
   );
 };
 
-export default CardGroup;

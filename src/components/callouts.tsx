@@ -16,7 +16,7 @@ const calloutStyles = {
 };
 
 
-const Callout: FC<CalloutProps> = ({ type, children }) => {
+export const Callout: FC<CalloutProps> = ({ type, children }) => {
   let color = "gray"; 
   let calloutIcon = "";
 
@@ -61,5 +61,4 @@ const Callout: FC<CalloutProps> = ({ type, children }) => {
   );
 };
 
-export default Callout;
  
