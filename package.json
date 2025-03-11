@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint .",
+    "lint": "biome check ./src",
+		"lint:fix": "biome check --write ./src",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -22,6 +23,7 @@
     "tailwind-children": "^0.5.0"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@eslint/js": "^9.9.1",
     "@types/prismjs": "^1.26.5",
     "@types/react": "^18.3.5",
