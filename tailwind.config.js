@@ -42,6 +42,9 @@ export default {
 					// when used in backgrounds (eg buttons) use hover:text-secondary-light
 					DEFAULT: "#f9fafb", // gray-50
 				},
+        tooltip:{
+          DEFAULT: "#1a202c", // slate-800
+        }
 			},
       typography: (theme) => ({
         DEFAULT: {

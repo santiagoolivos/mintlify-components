@@ -10,6 +10,7 @@ import { Step } from "./components/step";
 import { Steps } from "./components/steps";
 import { Tab } from "./components/tab";
 import { Tabs } from "./components/tabs";
+import { Tooltip } from "./components/tooltip";
 
 
 interface ComponentContainerProps {
@@ -31,11 +32,12 @@ const codeSnippets = [
   {
     filename: "HelloWorld.java",
     language: "java",
-    content: `class HelloWorld {
-    public static void main(String[] args) {
-        System.out.println("Hello, World!");
-    }
-    }`,
+    content: 
+    `class HelloWorld {
+  public static void main(String[] args) {
+    System.out.println("Hello, World!");
+  }
+}`,
     highlightLines: "2, 4",
     isExpandable:true
   }
@@ -43,26 +45,25 @@ const codeSnippets = [
 
 const ComponentContainer = ({ name,  children }: ComponentContainerProps) => {
   return (
-    <div className="flex flex-row gap-5 items-center justify-center">
-      <div className="inline">
+    <tr className="border">
+      {/* Left column: Name */}
+      <td className=" border p-2 font-bold text-primary">
         {name}:
-      </div>
-      <div className="flex flex-col">
-      {
-
-      children
-      }
-      </div>
-    </div>
+      </td>
+      {/* Right column: Children */}
+      <td className=" p-2 align-top flex flex-col items-start m-5">
+        {children}
+      </td>
+    </tr>
   );
 }
 
 function App() {
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-center w-full">
-      <h1 className="text-4xl font-bold mb-8 text-blue-500">Component Showcase</h1>
-      <div className="flex flex-col gap-4">
-        <div className="flex flex-col items-center gap-2 m-10">
+    <div className="min-h-screen bg-white flex flex-col items-center justify-center w-full m-10">
+      <h1 className="text-4xl font-bold mb-8 text-primary">Components Showcase</h1>
+      <table className="border-collapse">
+        <tbody>
           <ComponentContainer name="Accordion">
             <Accordion title="I am the Accordion">
               <p>Content inside the Accordion</p>
@@ -103,10 +104,15 @@ function App() {
               </Callout>
 
           </ComponentContainer>
+          <ComponentContainer name="Card">
+              <Card title="Click on me" icon={'link'}  href="/content/components/card-group" img={'/test-watermark.png'}  color="0000FF">
+                This is how you use a card with an icon and a link. Clicking on this card brings you to the Card Group page.
+              </Card> 
+          </ComponentContainer>
 
           <ComponentContainer name="Cards">
 
-            <CardGroup cols={3}>
+            <CardGroup cols={2}>
 
               <Card title="Click on me" icon={'link'}  href="/content/components/card-group" img={'/test-watermark.png'}  color="0000FF">
                 This is how you use a card with an icon and a link. Clicking on this card brings you to the Card Group page.
@@ -124,11 +130,14 @@ function App() {
           <ComponentContainer name="Code Block">
           <CodeBlock
             title="Code Block Example"
-            content={`const greeting = "Hello, World!";
+            content={ 
+`const greeting = "Hello, World!";
 function sayHello() {
   console.log(greeting);
 }
-sayHello();`}
+sayHello();
+`
+            }
             language="javascript"
             highlightLines="1, 3, 5"
             initialCollapsedHeight={100}
@@ -191,9 +200,16 @@ sayHello();`}
       </ComponentContainer>
 
 
+      <ComponentContainer name="Tooltip">
+      
+        <Tooltip tip="This is a tooltip!">Hover over me</Tooltip>
+      </ComponentContainer>
 
-        </div>
-      </div>
+
+
+
+        </tbody>
+      </table>
     </div>
   );
 }
