@@ -132,7 +132,6 @@ function App() {
 								title="Click on me"
 								icon={"link"}
 								href="/test-watermark.png"
-								img={"/test-watermark.png"}
 								color="blue"
 								horizontal={true}
 							>
@@ -195,13 +194,13 @@ sayHello();`}
 								icon="circle"
 								titleSize="h2"
 								stepNumber={1}
-								iconType="regular"
+								iconType="solid"
 							>
 								These are instructions or content that only pertain to the first
 								step.
 							</Step>
 
-							<Step title="Second Step" titleSize="h3">
+							<Step title="Second Step" titleSize="h3" stepNumber={100}>
 								These are instructions or content that only pertain to the
 								second step.
 							</Step>
