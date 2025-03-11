@@ -34,13 +34,13 @@ export function CodeGroup({ codeSnippets, defaultIndex = 0 }: CodeGroupProps) {
 	return (
 		<div
 			className="
-        mt-5 mb-8 flex flex-col not-prose relative overflow-hidden
+        mt-5 mb-8 flex flex-col not-prose relative 
         rounded-2xl dark:border-gray-800/50 bg-[#0F1117] border border-transparent 
         dark:bg-codeblock text-gray-50 codeblock-dark
       "
 		>
 			{/* Tabs header */}
-			<div className="relative border-b border-gray-900/80 bg-[#0F1117] dark:bg-codeblock">
+			<div className=" rounded-2xl relative border-b border-gray-900/80 bg-[#0F1117] dark:bg-codeblock">
 				{/* Tab list */}
 				<div
 					className="

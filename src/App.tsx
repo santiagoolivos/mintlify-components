@@ -30,7 +30,7 @@ const codeSnippets = [
 	},
 	{
 		filename: "HelloWorld.java",
-		language: "java",
+		language: "javascript",
 		content: `class HelloWorld {
   public static void main(String[] args) {
     System.out.println("Hello, World!");
@@ -67,7 +67,13 @@ function App() {
 							<p>Content inside the Accordion</p>
 						</Accordion>
 
-            <Accordion title="I am the Accordion with icon and description" icon="circle" iconType="regular" description="This is the description" defaultOpen={true}>
+						<Accordion
+							title="I am the Accordion with icon and description"
+							icon="circle"
+							iconType="regular"
+							description="This is the description"
+							defaultOpen={true}
+						>
 							<p>Content inside the Accordion with default open</p>
 						</Accordion>
 					</ComponentContainer>
@@ -97,10 +103,10 @@ function App() {
 						<Card
 							title="Click on me"
 							icon={"ghost"}
-              iconType="solid"
+							iconType="solid"
 							color="F16FF0"
 							href="/content/components/card-group"
-              horizontal={true}
+							horizontal={true}
 							img={"/test-watermark.png"}
 						>
 							This is how you use a card with an icon and a link. Clicking on
@@ -113,8 +119,8 @@ function App() {
 							<Card
 								title="Click on me"
 								icon={"link"}
-                iconType="solid"
-                color="red" // this also can be the hex
+								iconType="solid"
+								color="red" // this also can be the hex
 								href="/content/components/card-group"
 								img={"/test-watermark.png"}
 							>
@@ -154,8 +160,7 @@ function App() {
 function sayHello() {
   console.log(greeting);
 }
-sayHello();
-`}
+sayHello();`}
 							language="javascript"
 							highlightLines="1, 3, 5"
 							initialCollapsedHeight={100}
@@ -173,7 +178,7 @@ sayHello();
 
 					<ComponentContainer name="Icon">
 						<Icon icon="check" iconType="solid" color="#FF5733" size={32} />
-						<Icon icon="circle" iconType="regular" color="#AF2733" size={10} />
+						<Icon icon="ghost" iconType="regular" color="#09F733" size={100} />
 					</ComponentContainer>
 
 					<ComponentContainer name="Step">

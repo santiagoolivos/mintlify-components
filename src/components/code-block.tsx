@@ -1,8 +1,7 @@
-"use client";
-
 import Prism from "prismjs";
 import { useEffect, useState } from "react";
-import "prismjs/themes/prism-tomorrow.css";
+// import "prismjs/themes/prism-c.css";
+import "prism-themes/themes/prism-coldark-dark.css";
 import { CopyToClipboardButton } from "./copy";
 
 interface CodeBlockProps {
@@ -127,7 +126,7 @@ export function CodeBlock({
 			{/* Code Content */}
 			<div
 				className="
-          min-w-full relative text-sm leading-6
+          min-w-full relative text-sm leading-6 p-5
           children:!my-0 children:!shadow-none children:!bg-transparent
           transition-[height] duration-300 ease-in-out
         "
@@ -138,7 +137,7 @@ export function CodeBlock({
 			>
 				<div
 					className="
-            overflow-x-auto h-full p-5
+            overflow-x-auto h-full
             [&>pre>code]:pr-[3rem]
             [&>pre>code>span.line-highlight]:min-w-[calc(100%+3rem)]
             overflow-y-hidden scrollbar-thin scrollbar-thumb-rounded 
@@ -172,19 +171,13 @@ export function CodeBlock({
 							onClick={() => setExpanded(true)}
 						>
 							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="24"
-								height="24"
-								fill="none"
-								stroke="currentColor"
-								strokeWidth="2"
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								className="lucide lucide-arrow-down size-3 transition-transform duration-400"
-							>
-								<path d="M12 5v14" />
-								<path d="m19 12-7 7-7-7" />
-							</svg>
+								style={{
+									maskImage: `url("https://mintlify.b-cdn.net/v6.6.0/solid/arrow-down.svg")`,
+									maskRepeat: "no-repeat",
+									maskPosition: "center",
+								}}
+								className=" w-3 h-3 bg-white transition-transform duration-400"
+							></svg>
 							Expand code
 						</button>
 					</div>
@@ -200,19 +193,13 @@ export function CodeBlock({
 							onClick={() => setExpanded(false)}
 						>
 							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="24"
-								height="24"
-								fill="none"
-								stroke="currentColor"
-								strokeWidth="2"
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								className="lucide lucide-arrow-up size-3 transition-transform duration-400"
-							>
-								<path d="M12 19V5" />
-								<path d="m5 12 7-7 7 7" />
-							</svg>
+								style={{
+									maskImage: `url("https://mintlify.b-cdn.net/v6.6.0/solid/arrow-up.svg")`,
+									maskRepeat: "no-repeat",
+									maskPosition: "center",
+								}}
+								className=" w-3 h-3 bg-white transition-transform duration-400"
+							></svg>
 							Collapse code
 						</button>
 					</div>

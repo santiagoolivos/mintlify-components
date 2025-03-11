@@ -62,13 +62,11 @@ export function CopyToClipboardButton({
 			<svg
 				className="top-5 h-[1rem] bg-slate-500 hover:bg-slate-300 cursor-pointer"
 				style={{
-					maskImage:
-						'url("https://mintlify.b-cdn.net/v6.6.0/solid/copy.svg")',
+					maskImage: 'url("https://mintlify.b-cdn.net/v6.6.0/solid/copy.svg")',
 					maskRepeat: "no-repeat",
 					maskPosition: "center center",
 				}}
-			>
-			</svg>
+			></svg>
 			<Tooltip
 				color={tooltipColor}
 				className={`${hidden ? "invisible" : undefined} group-hover:visible`}
