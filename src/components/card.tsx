@@ -23,7 +23,7 @@ export const Card: FC<CardProps> = ({
 	title,
 	icon,
 	iconType = "regular",
-	color,
+	color = "#2563eb",
 	href,
 	horizontal = false,
 	img,
@@ -65,14 +65,14 @@ export const Card: FC<CardProps> = ({
 
 			{/* Icon */}
 			{icon && (
-				<div className="h-4 w-4 fill-gray-800 dark:fill-gray-100 text-gray-800 dark:text-gray-100">
+				<div className="h-6 w-6 fill-gray-800 dark:fill-gray-100 text-gray-800 dark:text-gray-100">
 					<svg
-						className="w-4 h-4 bg-gray-800 dark:bg-gray-100"
+						className={`w-6 h-6 bg-${color}-800 dark:bg-${color}-100`}
 						style={{
 							maskImage: `url("https://mintlify.b-cdn.net/v6.6.0/${iconType}/${icon}.svg")`,
 							maskRepeat: "no-repeat",
 							maskPosition: "center",
-							backgroundColor: color ? color : "transparent",
+							backgroundColor: color,
 						}}
 					></svg>
 				</div>

@@ -132,7 +132,7 @@ function App() {
 								title="Click on me"
 								icon={"link"}
 								href="/test-watermark.png"
-								color="blue"
+								color="#0FF0FF"
 								horizontal={true}
 							>
 								This is how you use a card with an icon and a link. Clicking on
@@ -143,7 +143,6 @@ function App() {
 								icon={"link"}
 								href="/test-watermark.png"
 								img={"/test-watermark.png"}
-								color="blue"
 								horizontal={true}
 							>
 								This is how you use a card with an icon and a link. Clicking on
@@ -180,12 +179,6 @@ sayHello();`}
 						<Icon icon="ghost" iconType="regular" color="#09F733" size={100} />
 					</ComponentContainer>
 
-					<ComponentContainer name="Step">
-						<Step title="Lonely Step" stepNumber={1} titleSize="h2">
-							These are instructions or content that only pertain to the third
-							step.
-						</Step>
-					</ComponentContainer>
 
 					<ComponentContainer name="Steps">
 						<Steps titleSize="h3">
@@ -210,11 +203,6 @@ sayHello();`}
 								step.
 							</Step>
 						</Steps>
-					</ComponentContainer>
-					<ComponentContainer name="Tab">
-						<Tab title="Lonely tab" isActive={true}>
-							💪 Here’s content that’s only inside the third Tab.
-						</Tab>
 					</ComponentContainer>
 
 					<ComponentContainer name="Tabs">
